@@ -1,0 +1,76 @@
+<mat-card>
+    <div class="post-marign">
+        <button mat-stroked-button color="accent" class="new-posts">
+            <img src="assets/img/icons/add-bill.png" alt="" (click)="navigateToPosts()">New Posts
+        </button>
+    </div>
+
+    <div class="table-pagination-wrapper" class="table-responsive">
+        <div class="mat-elevation-z8">
+            <mat-table [dataSource]="postData">
+
+                <ng-container matColumnDef="expand">
+                    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="posts-expandArrow">
+                        <button mat-icon-button color="primary" class="da-tablArrow posts-expand-reduceSpace">
+                            <mat-icon id="expand_more" #chevron_right *ngIf="!element?.close ">arrow_drop_down
+                            </mat-icon>
+                            <mat-icon id="expand_more" #chevron_right *ngIf="element?.close ">arrow_drop_up</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="userId">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        USER ID
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span class="da-ellipsis" title="{{element?.userId}}">{{element?.userId}} </span>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        TITLE
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span class="da-ellipsis" title="{{element?.title}}">{{element?.title}} </span>
+                    </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="body">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        BODY
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" style="width: 442px;word-wrap: break-word;">
+                        <span class="da-ellipsis" title="{{element?.body}}">{{element?.body}} </span>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Actions -->
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>
+                        <span class="da-ellipsis"> Actions </span>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span class="da-ellipsis">
+                            <img src="assets/img/icons/edit.png" class="cursor-pointer"
+                                (click)="editDetails(element.id)" alt="edit">
+                            <img src="assets/img/icons/remove.png" class="cursor-pointer pl-2" alt="delete"
+                                title="delete" (click)="deletePostsDetails(element.id)">
+                            <img src="assets/img/icons/Suche-blue.png" class="cursor-pointer pl-2" alt="view"
+                                title="view" (click)="viewPostDetails(element.id)">
+                        </span>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedPostColumns">
+                </mat-header-row>
+                <mat-row  *matRowDef="let row; columns: displayedPostColumns"
+                    [ngClass]="row?.close ? 'post-row-activated' : ''" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
+                </mat-row>
+            </mat-table>
+        </div>
+    </div>
+</mat-card>

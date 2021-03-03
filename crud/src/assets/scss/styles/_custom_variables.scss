@@ -1,0 +1,187 @@
+@mixin easeOut {
+    transition: all 0.5s ease-out;
+}
+
+@mixin table-heads {
+    @include open-sans-regular;
+    font-size: 16px;
+    line-height: 22px;
+    color: $main-color;
+}
+
+@mixin table-data {
+    @include open-sans-semiBold;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+@mixin role-tabs {
+    @include open-sans-regular;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+}
+
+@mixin box-shadow {
+    box-shadow: 0 0 6px 0 rgba(127, 127, 127, 0.17);
+}
+
+@mixin custom-box-shadow {
+    box-shadow: 0 0 15px 0 rgba(127, 127, 127, 0.17);
+}
+@mixin custom-dark-shadow{
+    box-shadow: 0 6px 10px 0 rgba(127, 127, 127, 0.17);
+}
+
+@mixin custom-darker-box-shadow{
+    box-shadow: 0 0 40px 0 rgba(70,81,163,0.2);
+  }
+
+@mixin disabled-btn {
+    font-size: 12px;
+    line-height: 17px;
+    @include open-sans-regular;
+    text-transform: uppercase;
+    color: $white;
+    background-color: $role-tab-color;
+    padding: 4px 6px;
+}
+
+@mixin awaiting-btn {
+    font-size: 12px;
+    line-height: 17px;
+    @include open-sans-regular;
+    text-transform: uppercase;
+    color: $white;
+    background-color: $rework-btn;
+    padding: 4px 6px;
+}
+
+//ALL THE STANDARD HEADINGS
+@mixin heading-style {
+    @include open-sans-regular;
+    font-size: 16px;
+    line-height: 22px;
+    color: $main-color;
+    text-transform: capitalize;
+}
+
+// LAST UPDATE OF THE PAGE STYLE
+@mixin last-update-style {
+    font-size: 10px;
+    font-style: italic;
+    line-height: 14px;
+    color: rgba($black, .5);
+    @include open-sans-regular;
+}
+
+@mixin table-head-light {
+    color: rgba($black, .5);
+    font-size: 14px;
+    line-height: 19px;
+    @include open-sans-regular;
+}
+
+@mixin approval-table-head {
+    color: $main-color;
+    @include open-sans-regular;
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: capitalize;
+}
+
+@mixin approval-td {
+    color: $table-success;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+@mixin aprroval-input {
+    background-color: $approval-input-bg;
+    color: rgba($black, .6);
+    height: 40px;
+    padding: 8px 15px;
+    @include box-shadow;
+}
+
+// ****************************** EXCEL TABLE MIXINS starts ****************************** //
+@mixin excel-table-head {
+    color: $main-color;
+    @include open-sans-regular;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: capitalize;
+}
+
+// ****************************** EXCEL TABLE MIXINS ENDS ****************************** //
+// ****************************** ACTION ITEMS BUTTONS MIXINS starts ****************************** //
+@mixin approval-btns {
+    @include open-sans-semiBold;
+    font-size: 14px;
+    line-height: 19px;
+    color: $white;
+    min-width: 175px;
+    height: 40px;
+    margin-left: 35px;
+    text-transform: uppercase;
+    line-height: 19px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+// ****************************** ATTENSION MIXINS starts ****************************** //
+@mixin btn-leave {
+    @include open-sans-regular;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 17px;
+    color: $white;
+    width: auto;
+    height: 24px;
+    padding: 0;
+    text-transform: uppercase;
+    padding-left: 15px;
+    padding-right:15px;
+}
+
+// ****************************** MODAL MIXINS starts ****************************** //
+@mixin modal-title {
+    @include open-sans-semiBold;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 19px;
+    color: $white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+@mixin modal-label {
+    color: $main-color;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 19px;
+    text-transform: capitalize;
+}
+
+// ****************************** COMMON BUTTONS starts ****************************** //
+@mixin outline-btns {
+    @include open-sans-regular;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 19px;
+    text-transform: uppercase;
+    width: 165px;
+    height: 40px;
+}
+
+@mixin print-btn{
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 19px;
+    @include open-sans-semiBold;
+    color:$main-color;
+}
+
+@mixin form-box-shadow{
+    box-shadow: 0 0 6px 0 rgba(127,127,127,0.13);
+}

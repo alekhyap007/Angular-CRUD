@@ -1,0 +1,422 @@
+
+
+
+
+
+
+
+@mixin large-devices {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin tablets-pro-breakpoint {
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+        @content;
+        .left-side-nav {
+            .list-group {
+                .list-group-item {
+                    padding: 0.75rem 0.25rem !important;
+                }
+            }
+        }
+        .page-content {
+            .verticle-tab-content {
+                padding-right: 0;
+                .tab-wrapper {
+                    .role-tabs {
+                        justify-content: center;
+                        li {
+                            width: auto;
+                            min-width: 150px;
+                        }
+                    }
+                    .tab-content {
+                        padding-right: 0.35rem;
+                        padding-left: 1.35rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin tablets-breakpoint {
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        @content;
+        .left-side-nav {
+            .list-group {
+                .list-group-item {
+                    padding: .75rem 0.25rem!important;
+                }
+            }
+        }
+        .page-content {
+            .select-section {
+                .select-form {
+                    .or-div {
+                        position: unset;
+                        width: 100%;
+                        p {
+                            position: unset;
+                            text-align: center;
+                            display: block;
+                            padding: 10px 10px 0;
+                        }
+                    }
+                    .align-items-end {
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin landscape-phones {
+    @media (min-width: 576px) and (max-width: 767.98px) {
+        @content;
+    }
+}
+
+@mixin portrait-phones {
+    @media (max-width: 575.98px) {
+        @content;
+        //COMMON CLASS TABLE
+        table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            .appointment-btn {
+                .btn {
+                    height: 40px;
+                    line-height: 10px;
+                    font-size: 10px;
+                }
+                .small-btn:first-child {
+                    margin-right: 0;
+                }
+            }
+            .collapse-title {
+                white-space: nowrap;
+            }
+        }
+        //ACCORDION TABLE CSS STARTS
+        .list-table tr .sub-table-1 tr>th {
+            width: 100vw;
+        }
+        //MODAL CSS STARTS
+        .custom-modal {
+            .modal-dialog {
+                .modal-body {
+                    .modal-info {
+                        .modal-btn-group {
+                            display: flex;
+                            justify-content: space-between;
+                            .btn {
+                                min-width: 127px;
+                                margin-right: 25px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .modal-div {
+            .modal-body {
+                .apply-leave-form {
+                    .modal-btn-wrapper {
+                        .modal-btn:first-child {
+                            margin-right: 20px!important;
+                            min-width: 140px;
+                        }
+                    }
+                }
+            }
+        }
+        //PAGE-WRAPPER STARTS
+        .page-wrapper {
+            overflow: hidden;
+            //--------navbar head css ----------------
+            #navbarNavDropdown {
+                background: $main-color !important;
+                .navbar-nav {
+                    flex-direction: row;
+                    padding: 15px;
+                    .dropdown-menu {
+                        position: absolute;
+                    }
+                    .notification-list {
+                        width: 310px !important;
+                    }
+                    li {
+                        //right side dropdown menu
+                        .dropdown-menu {
+                            right: 0;
+                            left: auto;
+                            a {
+                                white-space: normal;
+                                border-bottom: none;
+                                div {
+                                    width: 24px;
+                                }
+                            }
+                        }
+                        a.nav-link {
+                            padding-right: 10px;
+                            font-size: 12px;
+                            .users-designation {
+                                font-size: 10px
+                            }
+                        }
+                    }
+                    //left side dropown menu
+                    .notification-circle {
+                        .dropdown-menu {
+                            right: 0;
+                            left: 0;
+                        }
+                    }
+                    .specialty {
+                        margin-right: 15px!important;
+                    }
+                }
+            }
+        }
+        //PAGE CONTENT CSS STARTS
+        .page-content {
+            //--- Breadcrumb on navigation section ---
+            .breadcrumb-section {
+                .breadcrumb-wrapper {
+                    p {
+                        font-size: 11px;
+                        font-weight: 600;
+                    }
+                }
+            }
+            //employee dashboard notification
+            .notification-section {
+                .notify-wrapper {
+                    .btn {
+                        white-space: nowrap;
+                    }
+                }
+            }
+            //-----head search section-------
+            .select-section {
+                .select-form {
+                    .or-div {
+                        position: relative;
+                        width: 100%;
+                        p {
+                            position: relative;
+                            text-align: center;
+                            display: block;
+                            padding: 10px 10px 0;
+                        }
+                    }
+                    .align-items-end {
+                        margin-top: 10px;
+                    }
+                }
+            }
+            .dashboard-section {
+                .dashboard-left-contain {
+                    .dashboard-top-contain {
+                        margin-bottom: 0;
+                        margin-top: 30px;
+                    }
+                    .dashboard-bottom-contain {
+                        .dashboard-left-nav {
+                            padding: 8px;
+                            .left-side-nav {
+                                .list-group {
+                                    .list-group-item {
+                                        padding: .75rem 0.25rem!important;
+                                        .submenu-list-wrapper {
+                                            .submenu-list {
+                                                padding-left: 0.2rem!important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //right content
+                .dashboard-right-contain {
+                    .dashboard-top-contain {
+                        margin-top: 30px;
+                        margin-bottom: 0;
+                    }
+                    //table count div css
+                    .total-count-wrapper {
+                        .search-div {
+                            padding-left: 10px;
+                        }
+                    }
+                    //horizontal tabs css
+                    .parent-subtabs-list {
+                        li {
+                            margin-right: 20px;
+                            a {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                    //horizontal upload section
+                    .upload-ips-list {
+                        .tab-btn-wrapper {
+                            display: flex;
+                        }
+                    }
+                    //approval btn css
+                    .approval-btn,
+                    .center-btn-wrapper {
+                        display: flex;
+                        .btn:first-child {
+                            margin-right: 28px;
+                        }
+                    }
+                    .remark-table-wrapper {
+                        //action btns css
+                        .action-items {
+                            .btn {
+                                font-size: 12px;
+                                margin-left: 15px;
+                                width: auto;
+                                &::before {
+                                    left: 5px;
+                                }
+                            }
+                        }
+                    }
+                    .dashboard-right-info {
+                        //sub heading css
+                        .sub-head-wrapper {
+                            .section-title,
+                            .back-btn {
+                                font-size: 12px;
+                            }
+                        }
+                        //----------profile css--------
+                        .profile-wrapper {
+                            .profile-main-section {
+                                .profile-name-img {
+                                    .name-details {
+                                        margin-left: 12px;
+                                        margin-top: 5px;
+                                        .name {
+                                            font-size: 14px;
+                                            line-height: 18px;
+                                        }
+                                    }
+                                }
+                                .profile-rank {
+                                    margin-right: 0;
+                                    p {
+                                        font-size: 14px;
+                                        line-height: 18px;
+                                    }
+                                }
+                            }
+                        }
+                        //----remark table wrapper css guntur page
+                        .remark-table-wrapper {
+                            .remark-details {
+                                padding: 20px 25px;
+                                p {
+                                    font-size: 10px;
+                                }
+                            }
+                            //offset-1 class
+                            .offset-1 {
+                                margin-left: 0;
+                            }
+                        }
+                        //---------leave management details and css---------
+                        .leave-details {
+                            // flex-direction: column;
+                            margin-bottom: .75rem;
+                            .leave-btns {
+                                align-items: center;
+                            }
+                        }
+                        //vertical ul li tab
+                        .vacancy-tabs-wrapper {
+                            .verticle-tabs {
+                                li {
+                                    p {
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+                        }
+                        //vertical ul tab content
+                        .verticle-tab-content {
+                            padding-right: 0;
+                            padding-bottom: 50px;
+                            .tab-wrapper {
+                                .role-tabs {
+                                    justify-content: center;
+                                    li {
+                                        width: auto;
+                                        min-width: 150px;
+                                    }
+                                }
+                                .tab-content {
+                                    padding-right: 0.35rem;
+                                    padding-left: 1.35rem;
+                                }
+                            }
+                        }
+                        //planning section accordion page css
+                        .search-div {
+                            .col-lg-3 {
+                                width: auto!important;
+                            }
+                        }
+                        //sanction-leaves page css
+                        .sanction-tabs-section {
+                            li a {
+                                width: auto;
+                                min-width: 150px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //TRAINING SECTION CSS CODE STARTS
+        .training-main-section {
+            margin-top: 4rem;
+            .delegation-wrapper {
+                #delegation-tabContent {
+                    .role-tabs {
+                        li {
+                            width: auto!important;
+                        }
+                    }
+                }
+            }
+        }
+        .select-section {
+            .select-form {
+                label {
+                    margin-top: 15px;
+                }
+            }
+        }
+        //LEAVE MANAGEMENT SECTION CSS CODE
+        .leave-management-section,
+        .training-main-section {
+            .leave-btns {
+                flex-direction: row;
+                align-items: start;
+                justify-content: space-between;
+            }
+        }
+    }
+}

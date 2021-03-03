@@ -1,0 +1,62 @@
+@import "styles/index";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+table 
+{
+    border-collapse: collapse
+}
+
+thead 
+{
+    border:solid 0.5px
+}
+
+tr 
+{
+ border: solid 0.5px
+}
+
+th
+  {
+    border:solid 0.5px
+}
+
+td 
+    {
+    border:solid 0.5px
+}
+
+header
+{
+    border:solid 0.5px
+}
+
+@media screen  {
+    .printPage{
+        display: none;
+    }
+      
+  }
+
+  @media print  {
+    .rec{
+        display:none;
+    }
+
+    .printPage{
+        display: block;
+    }
+
+    @page {
+        size: landscape
+    }
+
+  }
+
+ 
+  #hospital-registration-form{
+    .add-simulate-table{
+        border: none !important;
+    }
+    
+  }

@@ -1,0 +1,129 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+
+
+
+
+/*------------------------colors-----------------------------*/
+
+$theme-colors: (
+    // "primary": #012148,
+    "primary": #012148,
+    "secondary":#494949,
+    "Success":#50BF00,
+    "info":#268BD2,
+    "warning":#F8B849,
+    // "danger": #E8523F,
+    "danger": #B1020F,
+    "dark": #073642,
+    "light": #D8D8D8,
+);
+
+
+
+
+$font-family-open-sans:'Open Sans';
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$gray-900: #373a3c !default;
+$black:    #000 !default;
+
+
+/*---------------------------body--------------------------------*/
+
+$body-color:$gray-900;
+$body-bg:$white;
+
+/*------------------------font-family------------------------------*/
+$font-family-base:OpenSans-Regular, "Open Sans"; /*body fonts*/
+/*------------------------border-radius------------------------------*/
+
+$border-radius:               4px !default;
+$border-radius-lg:            4px !default;
+$border-radius-sm:            4px !default;
+$badge-pill-border-radius:          4px !default;
+/*-----------------------fonts-size-------------------------*/
+$font-size-base:              0.875rem !default;
+$headings-font-weight:        300 !default;
+$font-weight-semibold:   600 !default;
+$font-weight-bold:   700 !default;
+
+
+
+$h1-font-size:                $font-size-base * 2.3 !default;
+$h2-font-size:                $font-size-base * 1.875 !default;
+$h3-font-size:                $font-size-base * 1.640625 !default;
+$h4-font-size:                $font-size-base * 1.40625 !default;
+$h5-font-size:                $font-size-base * 1.171875 !default;
+$h6-font-size:                $font-size-base !default;
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $font-family-base!important;
+}
+
+$display1-size :3rem !default;
+$display2-size :2.5rem !default;
+$display3-size :2rem !default;
+$display4-size :1.40625rem !default;
+/*--------------------------------navabr----------------------------------------*/
+$spacer: 1rem !default;
+$navbar-padding-y: ($spacer / 1.8) !default;
+$navbar-padding-x: $spacer !default;
+
+/*------------------------buttons------------------------------*/
+$btn-font-weight:normal;
+$btn-border-width:1px;
+/*-----------------------table-------------------------*/
+$table-head-color:primary;
+$table-border-width:0px;
+
+/*-----------------------pagination-------------------------*/
+
+$pagination-color:#666666;
+$pagination-border-width:1px;
+
+/*---------------------alert-----------------------------*/
+$alert-bg-level:-10;
+
+/*---------------------badge-----------------------------*/
+$badge-border-radius:4px;
+
+
+/*---------------------progress-----------------------------*/
+$progress-border-radius:4px;
+
+/*---------------------popover-----------------------------*/
+$popover-border-color:#EB8231;
+$popover-arrow-outer-color:#EB8231;
+$popover-header-bg:$white;
+
+/*---------------------tabs-----------------------------*/
+
+$nav-tabs-link-active-color:  $white!default;
+$nav-tabs-link-active-bg:#012148!default;
+
+$hr-border-color: #012148;
+
+
+/*---------------------form-----------------------------*/
+$input-border-color:                    #E6E8ED !default;
+$input-border-radius:                   5px !default;
+$input-border-radius-lg:                5px !default;
+$input-border-radius-sm:                 5px!default;
+
+
+
+/*---------------------breadcrumb-----------------------------*/
+$breadcrumb-font-size:              16px !default;
+$breadcrumb-bg:                     $white!default;
+$breadcrumb-active-color:           #012148 !default;
+
