@@ -1,75 +1,78 @@
 <main class="page-content">
-    <section class="dashboard-section">
+  <section class="dashboard-section">
+    <div class="col-sm-12 col-md-5">
+      <div class="sub-head-wrapper">
+        <p class="back-btn">
+          <a href="javascript:void(0)" (click)="redirectToDashboard()">
+            <img src="assets/img/icons/left_arrow.png" alt="">&nbsp;back
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
       <div class="col-sm-12 col-md-5">
-        <div class="sub-head-wrapper">
-          <p class="back-btn">
-            <a href="javascript:void(0)" (click)="redirectToDashboard()">
-              <img src="assets/img/icons/left_arrow.png" alt="">&nbsp;back
-            </a>
-          </p>
+        <div class="dashboard-right-info p-3">
+          <form [formGroup]="postForm" class="postForm" id="postForm">
+            <div class="form-group">
+              <label>User ID
+                <span class="text-danger">*</span>
+              </label>
+              <input class="form-control" id="userId" type="number" formControlName="userId">
+              <div
+                *ngIf="postForm.controls['userId'].invalid && (postForm.controls['userId'].dirty || postForm.controls['userId'].touched)">
+                <div *ngIf="postForm.controls['userId'].errors.required">
+                  <p class="err-msg-red">
+                    UserId is required.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Title<span class="text-danger">*</span></label>
+              <input class="form-control" id="title" type="text" formControlName="title">
+              <div
+                *ngIf="postForm.controls['title'].invalid && (postForm.controls['title'].dirty || postForm.controls['title'].touched)">
+                <div *ngIf="postForm.controls['title'].errors.required">
+                  <p class="err-msg-red">
+                    Title is required.
+                  </p>
+                </div>
+                <div *ngIf="postForm.controls['title'].errors.pattern">
+                  <p class="err-msg-red">
+                    Please enter valid title.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Body
+                <span class="text-danger">*</span>
+              </label>
+              <textarea class="form-control" id="body" type="text" formControlName="body"></textarea>
+              <div
+                *ngIf="postForm.controls['body'].invalid && (postForm.controls['body'].dirty || postForm.controls['body'].touched)">
+                <div *ngIf="postForm.controls['body'].errors.required">
+                  <p class="err-msg-red">
+                    Body is required.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center" *ngIf="!viewFlag">
+              <div class="action-items">
+                <button id="btnSaveDetails" class="btn btn-primary submit-btn" [disabled]="!postForm.valid"
+                  (click)="saveDetails()">{{updateFlag ? 'Update' : 'Submit'}}</button>
+              </div>
+              <div class="action-items pl-2">
+                <button id="btnSaveDetails" class="btn btn-primary" (click)="onReset()">Reset</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="row justify-content-center" >
-        <div class="col-sm-12 col-md-5">
-            <div class="dashboard-right-info p-3">
-              <form [formGroup]="postForm" class="postForm" id="postForm">
-                    <div class="form-group">
-                      <label>User ID
-                        <span class="text-danger">*</span>
-                      </label>
-                      <input class="form-control" id="userId" type="number" formControlName="userId">
-                      <div
-                        *ngIf="postForm.controls['userId'].invalid && (postForm.controls['userId'].dirty || postForm.controls['userId'].touched)">
-                        <div *ngIf="postForm.controls['userId'].errors.required">
-                          <p class="err-msg-red">
-                            UserId is required.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label>Title
-                        <span class="text-danger">*</span>
-                      </label>
-                      <input class="form-control" id="title" type="text" formControlName="title">
-                      <div
-                        *ngIf="postForm.controls['title'].invalid && (postForm.controls['title'].dirty || postForm.controls['title'].touched)">
-                        <div *ngIf="postForm.controls['title'].errors.required">
-                          <p class="err-msg-red">
-                            Title is required.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label>Body
-                        <span class="text-danger">*</span>
-                      </label>
-                      <textarea class="form-control" id="body" type="text" formControlName="body"></textarea>
-                      <div
-                        *ngIf="postForm.controls['body'].invalid && (postForm.controls['body'].dirty || postForm.controls['body'].touched)">
-                        <div *ngIf="postForm.controls['body'].errors.required">
-                          <p class="err-msg-red">
-                            Body is required.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                  <div class="d-flex justify-content-center">
-                    <div class="action-items">
-                      <button id="btnSaveDetails" class="btn btn-primary submit-btn" [disabled]="!postForm.valid"
-                        (click)="saveDetails()">{{updateFlag ? 'Update' : 'Submit'}}</button>
-                    </div>
-                    <div class="action-items pl-2">
-                      <button id="btnSaveDetails" class="btn btn-primary" (click)="onReset()">Reset</button>
-                    </div>
-                  </div>
-              </form>
-            </div>
-          </div>
-      </div>
-    </section>
+    </div>
+  </section>
 </main>

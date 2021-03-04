@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -20,29 +16,21 @@ export class ApiService {
     const headersConfig = {
       Accept: 'application/json',
     };
-    if (!options.multipartFormData) {
-      headersConfig['Content-Type'] = 'application/x-www-form-urlencoded';
-    }
-    headersConfig['client-type'] = 'ADMIN-WEB';
     return new HttpHeaders(headersConfig);
   }
 
-  private formatErrors(error: any) {
-    return throwError(error);
-  }
-
   /*-----APIS ----*/
+  // tslint:disable-next-line:ban-types
   postUsers(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
       `${path}`,
       body,
       { headers: this.setHeaders({ multipartFormData: false }) },
-    )
-      .catch(this.formatErrors);
+    );
   }
 
-  updateById(path: string, body: object, id:any): Observable<any> {
-    return this.http.put(`${path}${id}`,body, { headers: this.setHeaders({ multipartFormData: false })});
+  updateById(path: string, body: object, id: any): Observable<any> {
+    return this.http.put(`${path}${id}`, body, { headers: this.setHeaders({ multipartFormData: false })});
 }
 
 
@@ -56,13 +44,14 @@ export class ApiService {
     });
   }
 
-  getUsersById(value: string, id:string): Observable<any> {
+  getUsersById(value: string, id: string): Observable<any> {
     return this.http.get(`${value}${id}`, {
       headers: this.setHeaders({ multipartFormData: false })
     });
   }
 
   /* ----- Start of Navigating with params----- */
+  // tslint:disable-next-line:typedef
   redirect(routeLink) {
     this.router.navigate([routeLink]);
   }

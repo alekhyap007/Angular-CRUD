@@ -1,46 +1,47 @@
 @import "assets/scss/styles";
 
-  .back-btn {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    margin-bottom: 0;
-    text-transform: capitalize;
-    font-size: 16px;
+/*back button css starts here*/
+.back-btn {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 0;
+  text-transform: capitalize;
+  font-size: 16px;
+  color: black;
+  font-family: open-sans-bold;
+  cursor: pointer;
+  font-weight: bold;
+  position: absolute;
+  top: 141px;
+  right: 95%;
+
+  a {
     color: black;
-    font-family: open-sans-bold;
-    cursor: pointer;
-    font-weight: bold;
-    position: absolute;
-    top: 141px;
-    right: 95%;
-
-    a {
+    text-decoration: none;
+    margin-top: -338px;
+    margin-right: -49px;
+    &:active,
+    &:hover,
+    &:focus {
       color: black;
-      text-decoration: none;
-      margin-top: -338px;
-      margin-right: -49px;
-      &:active,
-      &:hover,
-      &:focus {
-        color: black;
-      }
-    }
-
-    img {
-      width: 7px;
     }
   }
 
-.bg-primary {
-  background-color: #012148 !important
+  img {
+    width: 7px;
+  }
 }
+/*back button css ends here*/
 
-span{
+.bg-primary {
+  background-color: #012148 !important;
+}
+span {
   text-transform: uppercase;
 }
 
-
+/*Save button css starts here*/
 .save-btn {
   @include open-sans-regular;
   font-size: 14px;
@@ -54,10 +55,12 @@ span{
     margin-right: 10px;
   }
 }
+/*Save button css ends here*/
 
+/*for required -error statements starts here*/
 .req-error::after {
   content: "*";
-  color: #D0021B
+  color: #d0021b;
 }
 
 .err-msg-red {
@@ -69,46 +72,46 @@ span{
   @include open-sans-regular;
   font-weight: normal !important;
 }
+/*for required -error statements starts here*/
 
+/*To remove the arrow cion from the number type*/
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
-  .mat-row {
-    &:nth-of-type(even) {
-      background-color: #e9ecef;
-    }
-  }
-
-  .mat-header-cell{
+/*Table striped rows--even*/
+.mat-row {
+  &:nth-of-type(even) {
     background-color: #e9ecef;
-    font-weight: bold;
-    color: black;
-    font-size: 16px;
   }
-
-.swal2-styled.swal2-confirm {
-  border: 0;
-  border-radius: .25em;
-  background: initial;
-  background-color: #012148;
-  color: #fff;
-  font-size: 1.0625em;
 }
 
-.new-posts{
+/*Table header styles*/
+.mat-header-cell {
+  background-color: #e9ecef;
+  font-weight: bold;
+  color: black;
+  font-size: 16px;
+}
+
+/*New posts button css*/
+.new-posts {
   float: right;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

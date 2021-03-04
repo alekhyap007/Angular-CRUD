@@ -13,6 +13,8 @@ const routes: Routes = [
             { path: 'postsDashboard', component: PostsDashboardComponent },
             { path: 'postsData', component: CreatePostsComponent },
             { path: 'postsData/:id', component: CreatePostsComponent },
+            { path: 'postsData/:id/:viewOnly', component: CreatePostsComponent },
+
         ]
     }
 ];

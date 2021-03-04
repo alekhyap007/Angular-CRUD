@@ -11,14 +11,17 @@ export class SweetAlertService {
   constructor() {
   }
 
+  // tslint:disable-next-line:typedef
   public success(heading: string, message: string, type = 'success') {
 
   }
 
+  // tslint:disable-next-line:typedef
   public error(heading: string, message: string, type = 'error') {
 
   }
 
+  // tslint:disable-next-line:typedef
   public showErrorInformation(error: any) {
     switch (error.status) {
       case 401: {
@@ -86,7 +89,7 @@ export class SweetAlertService {
 
     this.sweetAlert.fire({
       text: succesMsg,
-      icon: icon,
+      icon,
       showCancelButton: false,
       confirmButtonText: 'OK',
       allowOutsideClick: false,
@@ -105,7 +108,7 @@ export class SweetAlertService {
 
     this.sweetAlert.fire({
       text: errMsg,
-      icon: icon,
+      icon,
       showCancelButton: false,
       confirmButtonText: 'OK',
       allowOutsideClick: false,
@@ -123,7 +126,7 @@ export class SweetAlertService {
   showSweetAlertForConfirmation(text: string): Observable<any> {
     this.sweetAlert.fire({
       title: 'Are you sure?',
-      text: text,
+      text,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes',
@@ -138,65 +141,5 @@ export class SweetAlertService {
     return this.subject.asObservable();
   }
 
-  /*method to show confirmation */
-  showSweetAlertForTransactionConfirmation(text: string): Observable<any> {
-    this.sweetAlert.fire({
-      title: 'Are you sure?',
-      text: text,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No',
-      allowOutsideClick: false
-      //reverseButtons: true
-    }).then((result) => {
-      if (result.value) {
-        this.subject.next(true);
-      } else if (result.dismiss === swal.DismissReason.cancel) {
-        this.subject.next(false);
-      }
-    });
-    return this.subject.asObservable();
-  }
-
-  /*method to show delete Estimation Cost */
-  showSweetAlertForEstimationCost(): Observable<any> {
-    this.sweetAlert.fire({
-      title: 'Warning!',
-      // text: 'Warning!',
-      html: "This is the only estimation cost! <br>If you delete it, you will not able to submit this PAR form.<br> Are you sure you want to delete the estimation cost?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes',
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.value) {
-        this.subject.next(true);
-      } else if (result.dismiss === swal.DismissReason.cancel) {
-        this.subject.next(false);
-      }
-    });
-    return this.subject.asObservable();
-  }
-
-  /*method to show loan transaction */
-  showSweetAlertForPaymentTransaction(): Observable<any> {
-    this.sweetAlert.fire({
-      title: 'Warning!',
-      // text: 'Warning!',
-      html: "Are you sure you want to submit?<br>Please make sure transaction is cleared by respective bank.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes',
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.value) {
-        this.subject.next(true);
-      } else if (result.dismiss === swal.DismissReason.cancel) {
-        this.subject.next(false);
-      }
-    });
-    return this.subject.asObservable();
-  }
 
 }
