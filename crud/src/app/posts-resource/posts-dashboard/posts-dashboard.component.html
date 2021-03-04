@@ -7,7 +7,7 @@
 
     <div class="table-pagination-wrapper" class="table-responsive">
         <div class="mat-elevation-z8">
-            <mat-table [dataSource]="postData">
+            <mat-table [dataSource]="currentPost">
 
                 <ng-container matColumnDef="expand">
                     <mat-header-cell *matHeaderCellDef> </mat-header-cell>
@@ -47,6 +47,7 @@
                         <span class="da-ellipsis" title="{{element?.body}}">{{element?.body}} </span>
                     </mat-cell>
                 </ng-container>
+            
 
                 <!-- Actions -->
                 <ng-container matColumnDef="actions">

@@ -1,22 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 import { ApiService } from '../../../shared/api.service';
 import { SweetAlertService } from '../../../shared/sweet-alert-service';
-import { PostDataService } from '../../../shared/postData';
+import { PostDataService } from '../../../shared/postData-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-posts-dashboard',
   templateUrl: './posts-dashboard.component.html',
   styleUrls: ['./posts-dashboard.component.scss']
 })
-export class PostsDashboardComponent implements OnInit {
+
+export class PostsDashboardComponent implements OnInit, OnDestroy {
   @BlockUI() blockUI: NgBlockUI;
   subscription: any;
   postData: any;
   alertSubscribe: any;
-  propertyStaticData: any;
+  currentPost: any;
+  postService: Subscription;
   displayedPostColumns: string[] = [
     'userId',
     'title',
@@ -28,33 +31,18 @@ export class PostsDashboardComponent implements OnInit {
               private apiService: ApiService,
               private alertService: SweetAlertService,
               private postDataService: PostDataService
-              ) { }
+              ) {}
 
   ngOnInit(): void {
-    this.getPostsData();
     this.getStaticPostsData();
   }
 
   // tslint:disable-next-line:typedef
   getStaticPostsData(){
-    this.postDataService.getPostsDetails().subscribe(data => {
-      this.propertyStaticData = data;
-      console.log(this.propertyStaticData);
+    this.postService = this.postDataService.currentPost.subscribe(user => {
+      this.currentPost = user;
     });
    }
-  /*Get all posts data*/
-  // tslint:disable-next-line:typedef
-  getPostsData() {
-    this.blockUI.start('Loading...');
-    this.apiService.getUsers('https://jsonplaceholder.typicode.com/posts').subscribe(response => {
-      this.blockUI.stop();
-      this.postData = response;
-    },
-    (err) => {
-      this.errorFunction(err);
-    });
-  }
-
   /*Delete the post based on ID*/
   // tslint:disable-next-line:typedef
   deletePostsDetails(id) {
@@ -73,17 +61,17 @@ export class PostsDashboardComponent implements OnInit {
   // tslint:disable-next-line:typedef
   deletePost(id, confirmText, iconText) {
     this.blockUI.start('Loading...');
-    const selectPos = this.propertyStaticData.indexOf(id);
-    this.propertyStaticData.forEach(element => {
+    this.currentPost.forEach((element, index) => {
       if (element.id === id) {
-        this.propertyStaticData.splice(selectPos, 1);
-        setTimeout(() => { this.blockUI.stop(); }, 1500);
+        this.currentPost.splice(index, 1);
+        this.blockUI.stop();
         this.subscription = this.alertService.showSuccessSweetAlert(confirmText, iconText).subscribe(() => {
           this.subscription.unsubscribe();
+          this.currentPost = [...this.currentPost];
         });
-        this.postData = this.propertyStaticData;
       }
-    });
+    },
+    );
   }
 
   /*On click Edit Icon navigate to create post page by id*/
@@ -126,5 +114,9 @@ export class PostsDashboardComponent implements OnInit {
     this.blockUI.stop();
   }
 
+  // tslint:disable-next-line:typedef
+  ngOnDestroy() {
+    this.postService.unsubscribe();
+  }
 
 }

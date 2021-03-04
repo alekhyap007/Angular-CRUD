@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostDataService {
+    private postSource = new BehaviorSubject<any>({});
+    public currentPost = this.postSource.asObservable();
+    postDetailsArray = [];
+    constructor() {
 
-  constructor() { }
+        this.setCurrentPost(this.getPostsDetails());
+    }
 
-  getPostsDetails(): Observable<any> {
-    const postDetailsArray = [
+  // tslint:disable-next-line:typedef
+  setCurrentPost(user: any) {
+    this.postSource.next(user);
+  }
+  // tslint:disable-next-line:typedef
+  getPostsDetails(){
+    return [
         {
             "userId": 1,
             "id": 1,
@@ -611,7 +621,7 @@ export class PostDataService {
             "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
         }
     ]
-    return of(postDetailsArray);
+    
   }
 
 }

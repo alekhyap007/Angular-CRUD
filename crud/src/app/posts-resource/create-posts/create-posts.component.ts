@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { ApiService } from '../../../shared/api.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SweetAlertService } from '../../../shared/sweet-alert-service';
+import { PostDataService } from '../../../shared/postData-service';
+
 @Component({
   selector: 'app-create-posts',
   templateUrl: './create-posts.component.html',
   styleUrls: ['./create-posts.component.scss'],
 })
-export class CreatePostsComponent implements OnInit {
+export class CreatePostsComponent implements OnInit, OnDestroy {
   @BlockUI() blockUI: NgBlockUI;
-
+  @Input() postArray: any = [];
   postForm: FormGroup;
   mapIdData: any;
   routeParameters: Subscription;
@@ -22,19 +24,25 @@ export class CreatePostsComponent implements OnInit {
   viewFlag: any;
   viewOnly: any;
   alertSubscribe: any;
+  currentPost: any;
+  postService: Subscription;
 
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
     private alertService: SweetAlertService,
     private router: Router,
+    private postDataService: PostDataService
   ) {}
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
       userId: new FormControl('', Validators.required),
       body: new FormControl('', Validators.required),
-      title: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+      title: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z\s]*$/),
+      ]),
     });
 
     this.routeParameters = this.route.paramMap.subscribe((params) => {
@@ -54,9 +62,15 @@ export class CreatePostsComponent implements OnInit {
         this.viewFlag = true;
       }
     });
+    this.getStaticPostsData();
   }
 
-
+  // tslint:disable-next-line:typedef
+  getStaticPostsData() {
+    this.postService = this.postDataService.currentPost.subscribe((user) => {
+      this.currentPost = user;
+    });
+  }
   /* Get post details by ID */
   // tslint:disable-next-line:typedef
   getDetailsById(id) {
@@ -118,6 +132,8 @@ export class CreatePostsComponent implements OnInit {
         .postUsers('https://jsonplaceholder.typicode.com/posts', postObj)
         .subscribe(
           (data) => {
+            this.currentPost.push(data);
+            this.postDataService.setCurrentPost(this.currentPost);
             this.blockUI.stop();
             this.subscription = this.alertService
               .showSuccessSweetAlert(confirmText, iconText)
@@ -181,5 +197,10 @@ export class CreatePostsComponent implements OnInit {
       this.alertService.showErrorInformation(err);
     }
     this.blockUI.stop();
+  }
+  
+  // tslint:disable-next-line:typedef
+  ngOnDestroy() {
+    this.postService.unsubscribe();
   }
 }
